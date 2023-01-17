@@ -10,9 +10,8 @@
         android:name="com.digipod.statestrivia.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
-
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_FirstFragment_to_SecondFragment2"
             app:destination="@id/SecondFragment" />
     </fragment>
     <fragment
@@ -20,9 +19,9 @@
         android:name="com.digipod.statestrivia.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+        <argument
+            android:name="pos"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 </navigation>

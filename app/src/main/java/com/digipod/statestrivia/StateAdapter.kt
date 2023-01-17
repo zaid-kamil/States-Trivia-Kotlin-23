@@ -7,7 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class StateAdapter(
-    val stateList: List<State>
+    private val stateList: List<State>,
+    private val clickListener: (Int) -> Unit
 ) : RecyclerView.Adapter<StateAdapter.ViewHolder>() {
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private lateinit var txtName: TextView
@@ -15,6 +16,7 @@ class StateAdapter(
             txtName = view.findViewById(android.R.id.text1)
             txtName.text = state.name
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,6 +26,7 @@ class StateAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(stateList[position])
+        holder.view.setOnClickListener { clickListener(position) }
     }
 
     override fun getItemCount() = stateList.size
